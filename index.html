@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Love Story 💖</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5c9a, #8e44ad, #ff9a9e);
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 650px;
+  margin: 25px auto;
+  padding: 25px;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 25px;
+  box-shadow: 0 10px 40px #4b123a55;
+  backdrop-filter: blur(12px);
+}
+
+h1 {
+  font-size: 35px;
+  margin: 15px 0;
+}
+
+p {
+  line-height: 1.7;
+  margin: 12px 0;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 9px 0;
+  border: none;
+  border-radius: 12px;
+  outline: none;
+  font-size: 16px;
+}
+
+button {
+  padding: 13px 20px;
+  margin: 8px;
+  border: none;
+  border-radius: 30px;
+  background: #ff176f;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: #e6005c;
+}
+
+.anime {
+  width: 100%;
+  max-width: 380px;
+  height: 270px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 15px auto;
+  display: block;
+  background: #ffc1dc;
+}
+
+#letter {
+  display: none;
+  margin-top: 25px;
+  padding: 20px;
+  background: #fff0f6;
+  color: #b4145b;
+  border-radius: 20px;
+  animation: appear 0.8s ease;
+}
+
+#letter p {
+  white-space: pre-line;
+}
+
+#yesMessage {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 15px;
+}
+
+.heart {
+  position: fixed;
+  bottom: -40px;
+  pointer-events: none;
+  animation: floatUp 5s linear forwards;
+  z-index: 10;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.music-box {
+  margin-top: 25px;
+}
+
+audio {
+  width: 100%;
+  margin-top: 12px;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px;
+  }
+
+  .container {
+    padding: 17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>💖 Our Love Story 💖</h1>
+
+  <p>
+    Someone special ke liye ek chhota sa surprise! 🌹
+    <br>
+    Apne naam likho aur magic dekho.
+  </p>
+
+  <img
+    id="animeImage"
+    class="anime"
+    src="https://api.waifu.pics/sfw/waifu"
+    alt="Anime girl illustration"
+  >
+
+  <form id="loveForm">
+    <input
+      type="text"
+      id="yourName"
+      placeholder="Tumhara naam 💗"
+      maxlength="35"
+      required
+    >
+
+    <input
+      type="text"
+      id="partnerName"
+      placeholder="Unka naam 💕"
+      maxlength="35"
+      required
+    >
+
+    <button type="submit">
+      Open My Surprise 💌
+    </button>
+  </form>
+
+  <div id="letter">
+    <h2 id="letterTitle">My Dear ❤️</h2>
+
+    <p id="letterText"></p>
+
+    <div style="font-size:45px">💗💖💗</div>
+
+    <button id="yesButton" type="button">
+      YES 💞
+    </button>
+
+    <button id="copyButton" type="button">
+      Copy Love Letter 💌
+    </button>
+
+    <button id="animeButton" type="button">
+      Change Anime 🌸
+    </button>
+
+    <div id="yesMessage"></div>
+  </div>
+
+  <div class="music-box">
+    <h2>🎵 Our Special Song 🎵</h2>
+
+    <p>
+      Apne mobile ya laptop se music file select karo.
+    </p>
+
+    <input
+      type="file"
+      id="musicFile"
+      accept="audio/*"
+    >
+
+    <audio id="musicPlayer" controls loop></audio>
+  </div>
+
+  <p style="margin-top:25px">
+    Made with ❤️ just for you
+  </p>
+
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+let yourName = "";
+let partnerName = "";
+let loveLetter = "";
+
+$("loveForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  yourName = $("yourName").value.trim();
+  partnerName = $("partnerName").value.trim();
+
+  if (!yourName || !partnerName) {
+    alert("Dono naam likho ❤️");
+    return;
+  }
+
+  $("letterTitle").textContent =
+    "My Dear " + partnerName + " 💖";
+
+  loveLetter =
+    "Dear " + partnerName + ", ❤️\n\n" +
+    "Tum meri life ke ek bahut special insaan ho. " +
+    "Tumhari smile mere din ko beautiful bana sakti hai. " +
+    "Tumse baat karna aur tumhari khushi dekhna mere liye " +
+    "bahut precious hai. 🌹\n\n" +
+    "Main chahta/chahti hoon ki tum hamesha khush raho, " +
+    "apne saare dreams poore karo aur life mein aage badho. " +
+    "Agar tum bhi chaho, toh hum ek beautiful story " +
+    "saath mein shuru kar sakte hain. 💕\n\n" +
+    "With lots of love and care,\n" +
+    yourName + " 💌";
+
+  $("letterText").textContent = loveLetter;
+  $("letter").style.display = "block";
+  $("yesMessage").textContent = "";
+
+  $("letter").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  makeHearts(20);
+});
+
+$("yesButton").addEventListener("click", function() {
+  $("yesMessage").textContent =
+    "Yay! 💖 " + yourName + " & " +
+    partnerName + " — A beautiful story begins! 🌹";
+
+  makeHearts(35);
+});
+
+$("copyButton").addEventListener("click", async function() {
+  try {
+    await navigator.clipboard.writeText(loveLetter);
+    $("copyButton").textContent = "Copied! 💗";
+  } catch (error) {
+    const area = document.createElement("textarea");
+    area.value = loveLetter;
+    document.body.appendChild(area);
+    area.select();
+    document.execCommand("copy");
+    area.remove();
+    $("copyButton").textContent = "Copied! 💗";
+  }
+});
+
+$("animeButton").addEventListener("click", function() {
+  $("animeImage").src =
+    "https://api.waifu.pics/sfw/waifu?t=" + Date.now();
+});
+
+$("animeImage").addEventListener("error", function() {
+  this.alt = "Anime image unavailable. Check your internet connection.";
+});
+
+function makeHearts(count) {
+  for (let i = 0; i < count; i++) {
+    const heart = document.createElement("span");
+
+    heart.className = "heart";
+
+    const symbols = ["💖", "💗", "💕", "❤️", "🌸", "✨"];
+
+    heart.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize =
+      (18 + Math.random() * 25) + "px";
+
+    heart.style.animationDuration =
+      (3 + Math.random() * 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(function() {
+      heart.remove();
+    }, 6500);
+  }
+}
+
+$("musicFile").addEventListener("change", function(event) {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const player = $("musicPlayer");
+
+  player.src = URL.createObjectURL(file);
+  player.play().catch(function() {
+    // Agar autoplay block ho, controls par Play dabao.
+  });
+});
+</script>
+
+</body>
+</html>
