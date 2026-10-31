@@ -1,216 +1,225 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ashu ❤️ My Love</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-  font-family:Arial,sans-serif;color:white;text-align:center;
-  background:linear-gradient(135deg,#180b2e,#541344,#160b25);
-  overflow-x:hidden;min-height:100vh
+ font-family:Arial,sans-serif;
+ background:linear-gradient(135deg,#170b2b,#52133e,#200b32);
+ color:white;min-height:100vh;overflow-x:hidden;
 }
 header{
-  padding:18px;background:#180b2ee8;
-  position:sticky;top:0;z-index:10;
-  border-bottom:1px solid #ffffff30
+ background:#16091fe8;padding:18px;
+ display:flex;justify-content:space-between;
+ align-items:center;flex-wrap:wrap;gap:12px;
+ position:sticky;top:0;z-index:10;
+ border-bottom:1px solid #ffffff30;
 }
-.logo{font-size:28px;font-weight:bold;color:#ff9bc9}
-nav{display:flex;justify-content:center;flex-wrap:wrap;gap:15px;margin-top:12px}
-nav a{color:white;text-decoration:none;font-size:14px}
-nav a:hover{color:#ff9bc9}
-section{padding:65px 18px;position:relative}
-.hero{min-height:85vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
-h1{font-size:clamp(40px,9vw,75px);margin:18px 0}
-h2{font-size:clamp(28px,6vw,42px);margin-bottom:20px;color:#ff9bc9}
-p{line-height:1.8;color:#f6dced}
+.logo{font-size:25px;color:#ff9bc9;font-weight:bold}
+nav{display:flex;gap:12px;flex-wrap:wrap}
+nav button{
+ background:transparent;color:white;
+ border:1px solid #ffffff35;
+ padding:10px 13px;border-radius:20px;
+ cursor:pointer;
+}
+nav button:hover{background:#ff65a8}
+.page{display:none;min-height:85vh;padding:55px 18px;text-align:center}
+.page.active{display:block;animation:appear .7s}
+@keyframes appear{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+h1{font-size:clamp(38px,8vw,75px);margin:25px 0}
+h2{font-size:clamp(28px,6vw,43px);color:#ff9bc9;margin-bottom:25px}
+p{line-height:1.8;color:#f6dceb}
+.anime{font-size:85px;animation:float 3s infinite ease-in-out}
+@keyframes float{50%{transform:translateY(-18px)}}
 .glow{
-  background:linear-gradient(90deg,#fff,#ff7db8,#d7baff);
-  color:transparent;background-clip:text;
-  animation:shine 3s infinite alternate
+ background:linear-gradient(90deg,#fff,#ff8abb,#c4a7ff);
+ color:transparent;background-clip:text;
 }
-@keyframes shine{from{filter:drop-shadow(0 0 2px #ff7db8)}
-to{filter:drop-shadow(0 0 15px #ff7db8)}}
-.big-heart{font-size:90px;animation:beat 1s infinite}
-@keyframes beat{50%{transform:scale(1.18)}}
 .card{
-  width:min(650px,100%);margin:22px auto;padding:28px 20px;
-  border:1px solid #ffffff35;border-radius:25px;
-  background:#ffffff12;box-shadow:0 10px 40px #0003;
-  backdrop-filter:blur(8px)
+ width:min(650px,100%);margin:30px auto;padding:30px 20px;
+ background:#ffffff13;border:1px solid #ffffff35;
+ border-radius:25px;box-shadow:0 10px 40px #0004;
+ backdrop-filter:blur(10px);
 }
-button{
-  padding:13px 22px;margin:8px;border:0;border-radius:30px;
-  font-size:16px;font-weight:bold;cursor:pointer;
-  background:linear-gradient(90deg,#ff9bc9,#ff5ca8);color:#32102b;
-  transition:.25s
+.btn{
+ padding:14px 24px;margin:10px;
+ border:none;border-radius:30px;
+ background:linear-gradient(90deg,#ff9bc9,#ff5da7);
+ color:#37102c;font-weight:bold;font-size:16px;
+ cursor:pointer;transition:.3s;
 }
-button:hover{transform:scale(1.06)}
-.secondary{background:#ffffff20;color:white;border:1px solid #ffffff55}
+.btn:hover{transform:scale(1.08)}
+.no{background:#ffffff20;color:white;border:1px solid #ffffff55}
 input{
-  width:min(250px,100%);padding:14px;margin:8px;
-  border:1px solid #ff9bc9;border-radius:12px;
-  background:#1d102b;color:white;font-size:16px
+ padding:14px;margin:8px;width:min(240px,90%);
+ border-radius:12px;border:1px solid #ff8abb;
+ background:#21102d;color:white;font-size:16px;
 }
-input::placeholder{color:#e7c5dc}
-#message,#surprise{display:none;margin-top:20px;color:#ffd1e8;line-height:1.8}
+#answer,#secret{display:none;margin-top:25px;line-height:2;color:#ffc5e2}
 .heart{
-  position:fixed;bottom:-40px;z-index:0;pointer-events:none;
-  animation:floatUp linear forwards
+ position:fixed;bottom:-40px;z-index:20;
+ pointer-events:none;animation:rain linear forwards;
 }
-@keyframes floatUp{
-  to{transform:translateY(-115vh) rotate(360deg);opacity:0}
+@keyframes rain{
+ to{transform:translateY(-115vh) rotate(360deg);opacity:0}
 }
-main,header,footer{position:relative;z-index:1}
-footer{padding:30px;color:#e9cce0}
-.meter{height:12px;background:#ffffff25;border-radius:20px;margin-top:20px;overflow:hidden}
-#meterFill{height:100%;width:0;background:#ff7db8;transition:width 1s}
+footer{padding:25px;text-align:center;color:#dcbcd4}
 @media(max-width:600px){
-  nav{gap:10px}
-  nav a{font-size:12px}
-  section{padding:48px 15px}
-  .card{padding:24px 15px}
+ header{justify-content:center}
+ nav{justify-content:center}
+ nav button{font-size:12px;padding:9px}
+ .page{padding:45px 14px}
+ .card{padding:24px 14px}
 }
 </style>
 </head>
 
 <body>
+
 <header>
-  <div class="logo">💖 Ashu — My Love 💖</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#anime">Romantic Anime</a>
-    <a href="#proposal">Proposal</a>
-    <a href="#calculator">Love Calculator</a>
-    <a href="#surpriseSection">Secret Surprise</a>
-  </nav>
+ <div class="logo">💖 Ashu</div>
+ <nav>
+  <button onclick="showPage('home')">🏠 Home</button>
+  <button onclick="showPage('about')">🌸 Anime</button>
+  <button onclick="showPage('proposal')">💍 Proposal</button>
+  <button onclick="showPage('surprisePage')">🎁 Surprise</button>
+ </nav>
 </header>
 
+<!-- HOME PAGE -->
 <main>
-<section class="hero" id="home">
-  <div class="big-heart">💗</div>
-  <h1 class="glow">Welcome to Ashu's Love World</h1>
-  <p>एक छोटी-सी दुनिया, जिसमें प्यार, खुशियाँ और ढेर सारे दिल हैं। ❤️</p>
-  <br>
-  <a href="#proposal"><button>💌 My Proposal</button></a>
+<section id="home" class="page active">
+ <div class="anime">💗</div>
+ <h1 class="glow">Welcome To Ashu</h1>
+ <h2>My Love World ❤️</h2>
+ <p>A beautiful little world made with love.</p>
+ <p>जहाँ हर पल खूबसूरत है और हर धड़कन में प्यार है।</p>
+ <br>
+ <button class="btn" onclick="showPage('proposal')">
+ Open My Proposal 💌
+ </button>
 </section>
 
-<section id="anime">
-  <h2>🌸 Romantic Anime World 🌙</h2>
-  <div class="card">
-    <div style="font-size:65px">🌸 👫 🌸</div>
-    <h3 class="glow" style="margin:20px">Our Love Story</h3>
-    <p>तुम मेरी कहानी का वो खूबसूरत हिस्सा हो, जिसे मैं बार-बार पढ़ना चाहूँ।</p>
-    <p>✨ हर पल खास हो, हर दिन प्यारा हो। ✨</p>
-  </div>
+<!-- ANIME PAGE -->
+<section id="about" class="page">
+ <h2>🌸 Romantic Anime World 🌸</h2>
+ <div class="card">
+  <div class="anime">🌸 👫 🌸</div>
+  <h2 class="glow">Our Love Story</h2>
+  <p>तुम मेरी कहानी का सबसे प्यारा हिस्सा हो।</p>
+  <p>May our story always be full of happiness. ❤️</p>
+ </div>
+ <button class="btn" onclick="showPage('home')">Back Home</button>
 </section>
 
-<section id="proposal">
-  <h2>💍 A Special Proposal 💍</h2>
-  <div class="card">
-    <div style="font-size:60px">💐💖💐</div>
-    <h3 style="margin:20px">Will You Be Mine?</h3>
-    <p>क्या तुम मेरी जिंदगी की इस खूबसूरत कहानी का हिस्सा बनोगे?</p>
-    <button onclick="sayYes()">YES ❤️</button>
-    <button class="secondary" onclick="sayNo()">NO 🙈</button>
-    <div id="message"></div>
-  </div>
+<!-- PROPOSAL PAGE -->
+<section id="proposal" class="page">
+ <h2>💍 Special Proposal 💍</h2>
+ <div class="card">
+  <div class="anime">💐</div>
+  <h2>Will You Be Mine?</h2>
+  <p>Can we write a beautiful story together?</p>
+  <p>क्या तुम मेरी इस खूबसूरत कहानी का हिस्सा बनोगे? ❤️</p>
+
+  <button class="btn" onclick="yesAnswer()">YES ❤️</button>
+  <button class="btn no" onclick="noAnswer()">NO 🙈</button>
+
+  <div id="answer"></div>
+ </div>
+ <button class="btn" onclick="showPage('home')">Back Home</button>
 </section>
 
-<section id="calculator">
-  <h2>💕 Love Calculator 💕</h2>
-  <div class="card">
-    <p>दो नाम लिखो और अपना fun love score देखो!</p>
-    <input id="name1" placeholder="पहला नाम" maxlength="30">
-    <input id="name2" placeholder="दूसरा नाम" maxlength="30">
-    <br>
-    <button onclick="calculateLove()">Calculate Love 💘</button>
-    <h3 id="result" style="margin-top:20px"></h3>
-    <div class="meter"><div id="meterFill"></div></div>
-    <p style="font-size:12px;margin-top:12px">यह सिर्फ मनोरंजन के लिए है, असली रिश्ते का माप नहीं।</p>
-  </div>
-</section>
+<!-- SURPRISE PAGE -->
+<section id="surprisePage" class="page">
+ <h2>🎁 Hidden Surprise 🎁</h2>
+ <div class="card">
+  <div class="anime">🔐💌</div>
+  <p>A little secret message is waiting for you.</p>
+  <button class="btn" onclick="openSecret()">Open Secret ❤️</button>
 
-<section id="surpriseSection">
-  <h2>🎁 Hidden Surprise 🎁</h2>
-  <div class="card">
-    <div style="font-size:60px">🔐💌</div>
-    <p>तुम्हारे लिए एक छोटा-सा secret message है!</p>
-    <button onclick="toggleSecret()">Open My Secret 💖</button>
-    <div id="surprise">
-      <h3>Dear Special Person ❤️</h3>
-      <p>तुम हमेशा मुस्कुराते रहो, अपने सपने पूरे करो और जिंदगी में खूब आगे बढ़ो। दुनिया की सारी खुशियाँ तुम्हें मिलें। ✨</p>
-      <h3>Made with love — Ashu 💗</h3>
-    </div>
+  <div id="secret">
+   <h2>Dear Special Person 💖</h2>
+   <p>
+    तुम हमेशा खुश रहो, मुस्कुराते रहो और अपने सारे सपने पूरे करो।
+    तुम्हारी जिंदगी खुशियों से भरी रहे। ❤️
+   </p>
+   <h2>With Love — Ashu 🌸</h2>
   </div>
+ </div>
+ <button class="btn" onclick="showPage('home')">Back Home</button>
 </section>
 </main>
 
-<footer>Made with ❤️ by Ashu | My Love Website ✨</footer>
+<footer>
+ Made with ❤️ by Ashu | My Love Website
+</footer>
 
-<!-- अपनी MP3 फाइल का नाम love-song.mp3 रखें -->
-<audio id="bgMusic" autoplay loop>
-  <source src="love-song.mp3" type="audio/mpeg">
+<!-- BACKGROUND MUSIC -->
+<audio id="music" autoplay loop>
+ <source src="love-song.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// दिलों की बारिश
+
+// PAGE NAVIGATION
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>{
+  p.classList.remove('active');
+ });
+ document.getElementById(id).classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// HEART RAIN ANIMATION
 function createHeart(){
-  const heart=document.createElement("div");
-  heart.className="heart";
-  heart.textContent=["❤️","💖","💕","💗","💘","✨"][Math.floor(Math.random()*6)];
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(16+Math.random()*25)+"px";
-  heart.style.animationDuration=(5+Math.random()*6)+"s";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),12000);
+ const h=document.createElement('div');
+ h.className='heart';
+ h.innerHTML=['❤️','💖','💕','💗','💘','✨'][Math.floor(Math.random()*6)];
+ h.style.left=Math.random()*100+'vw';
+ h.style.fontSize=(15+Math.random()*25)+'px';
+ h.style.animationDuration=(5+Math.random()*6)+'s';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),12000);
 }
 setInterval(createHeart,350);
 
-// Browser अनुमति दे तो music autoplay; वरना autoplay policy इसे रोक सकती है।
-const music=document.getElementById("bgMusic");
+// MUSIC AUTOPLAY
+const music=document.getElementById('music');
 music.volume=0.35;
-music.play().catch(()=>console.log("इस ब्राउज़र में music के लिए user interaction जरूरी है।"));
+music.play().catch(()=>{});
 
-function sayYes(){
-  const m=document.getElementById("message");
-  m.style.display="block";
-  m.innerHTML="Yayyyy! 💖❤️ ढेर सारी खुशियाँ और प्यार तुम्हारे नाम!";
-  for(let i=0;i<25;i++)setTimeout(createHeart,i*80);
-}
-function sayNo(){
-  const m=document.getElementById("message");
-  m.style.display="block";
-  m.textContent="कोई बात नहीं 😊 तुम्हारी पसंद और जवाब की इज़्ज़त है।";
+// YES BUTTON
+function yesAnswer(){
+ const a=document.getElementById('answer');
+ a.style.display='block';
+ a.innerHTML='Yayyy! ❤️💖 A beautiful new chapter begins!';
+ for(let i=0;i<25;i++)setTimeout(createHeart,i*100);
 }
 
-function calculateLove(){
-  const a=document.getElementById("name1").value.trim();
-  const b=document.getElementById("name2").value.trim();
-  const r=document.getElementById("result");
-  const meter=document.getElementById("meterFill");
-  if(!a||!b){
-    r.textContent="पहले दोनों नाम लिखो ❤️";
-    meter.style.width="0";
-    return;
-  }
-  const names=(a.toLowerCase()+"|"+b.toLowerCase());
-  let total=0;
-  for(let i=0;i<names.length;i++)total+=names.charCodeAt(i);
-  const score=60+(total%41);
-  r.textContent=a+" + "+b+" = "+score+"% 💕";
-  meter.style.width=score+"%";
+// NO BUTTON
+function noAnswer(){
+ const a=document.getElementById('answer');
+ a.style.display='block';
+ a.innerHTML='कोई बात नहीं 😊 तुम्हारी पसंद और जवाब की इज़्ज़त है।';
 }
-function toggleSecret(){
-  const s=document.getElementById("surprise");
-  s.style.display=s.style.display==="block"?"none":"block";
-  if(s.style.display==="block"){
-    for(let i=0;i<12;i++)setTimeout(createHeart,i*100);
-  }
+
+// SECRET MESSAGE
+function openSecret(){
+ const s=document.getElementById('secret');
+ s.style.display=s.style.display==='block'?'none':'block';
+ if(s.style.display==='block'){
+  for(let i=0;i<15;i++)setTimeout(createHeart,i*100);
+ }
 }
+
 </script>
 </body>
 </html>
